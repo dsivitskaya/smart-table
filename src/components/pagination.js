@@ -48,7 +48,7 @@ export const initPagination = (
     // console.log("До какой строки выводим",toRow.textContent);
     totalRows.textContent = data.length;
     //console.log("Сколько всего строк выводим на всех страницах",totalRows.textContent);
-    
+
     // @todo: #2.2 — посчитать сколько строк нужно пропустить и получить срез данных
     const skip = (page - 1) * rowsPerPage; // сколько строк нужно пропустить
     return data.slice(skip, skip + rowsPerPage); // получаем нужную часть строк (заменяем имеющийся return)
