@@ -30,6 +30,7 @@ function collectState() {
 async function render(action) {
   let state = collectState(); // состояние полей из таблицы
   let query = {};
+  query = applySearching(query, state, action);
   query = applyFiltering(query, state, action);
   query = applyPagination(query, state, action);
   const { total, items } = await api.getRecords(query);
@@ -46,7 +47,7 @@ const sampleTable = initTable(
   },
   render
 );
-//const applySearching = initSearching('search');  
+const applySearching = initSearching('search');  
 
 const { applyFiltering, updateIndexes } = initFiltering(sampleTable.filter.elements);
 
