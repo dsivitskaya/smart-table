@@ -15,8 +15,19 @@ export function initFiltering(elements) {
     };
 
     const applyFiltering = (query, state, action) => {
+        if (action && action.name === 'clear') { 
+            const input = action.parentElement.querySelector('input'); 
+            if (input) { 
+                input.value = ''; 
+            } 
+
+            const field = action.dataset.field; 
+            if (field) { 
+                state[field] = ''; 
+            }  
+        }
         // Обработка очистки поля (если есть кнопка reset)
-        if (action?.name === "reset") {
+        if (action && action.name === "reset") {
             // Очищаем все поля фильтра
             Object.keys(elements).forEach((key) => {
                 if (elements[key]) {
